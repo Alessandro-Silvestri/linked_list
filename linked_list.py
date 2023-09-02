@@ -1,4 +1,22 @@
-# CLASS: Node, LinkedList
+'''
+Python:
+Data Structures and Algorithms
+
+I built a nodes linked list class and it is possible to execute operations like:
+      print all the nodes
+      add nodes (last position)
+      add nodes (first position)
+      pop last node
+      pop first node
+      return a node given an index value
+      changing value of a node
+      insert a node in a give position
+      remove a node
+      reverse the list
+All the methods handel edge cases
+
+Solved by Alessandro Silvestri - 2023 <alessandro.silvestri.work@gmail.com>
+'''
 
 class Node():
   def __init__(self, value):
