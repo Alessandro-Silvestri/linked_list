@@ -67,24 +67,42 @@ class LinkedList:
             self.new_node.next = self.head
             self.head = self.new_node
             self.length += 1
+    
+
+    def pop_first(self):
+        #edge cases: empty list or with 1 node
+        if self.length == 0:
+            return None
+        elif self.length == 1:
+            temp = self.head
+            self.head = None
+            self.tail = None
+            self.length = 0
+            return temp
+        # normal case
+        pre = self.head
+        temp = self.head.next
+        self.head = temp
+        pre.next = None
+        self.length -= 1
+        return pre
 
             
 
           
 
 my_linked_list = LinkedList(1)
-my_linked_list.append(2)
 my_linked_list.print_list()
-print("\npop")
-my_linked_list.pop()
-my_linked_list.pop()
-my_linked_list.print_list()
+
+
+print("\npop first:")
+print(my_linked_list.pop_first().value)
+print(my_linked_list.pop_first())
+print(my_linked_list.pop_first())
+print(my_linked_list.pop_first())
+
+print("\nprint list:")
+my_linked_list.print_list()                                                                  
 
 print("\nlength:")
 print(my_linked_list.length)
-
-my_linked_list.prepend(8)
-
-print("\nprepend:")
-my_linked_list.print_list()
-                                                                         
