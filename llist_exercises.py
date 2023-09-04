@@ -56,6 +56,17 @@ class LinkedList:
         self.tail.next = None
         self.length -= 1
         return temp
+    
+    def prepend(self, value):
+        #edge case: empty list
+        self.new_node = Node(value)
+        if self.length == 0:
+            self.append(value)
+        else:
+            # normal case
+            self.new_node.next = self.head
+            self.head = self.new_node
+            self.length += 1
 
             
 
@@ -63,27 +74,17 @@ class LinkedList:
 
 my_linked_list = LinkedList(1)
 my_linked_list.append(2)
-my_linked_list.append(3)
-
-
-
+my_linked_list.print_list()
+print("\npop")
+my_linked_list.pop()
+my_linked_list.pop()
 my_linked_list.print_list()
 
-print()
-print("popped element:")
-print(my_linked_list.pop())
-print(my_linked_list.pop())
-print(my_linked_list.pop())
-print(my_linked_list.pop())
-print(my_linked_list.pop())
-print(my_linked_list.pop())
+print("\nlength:")
+print(my_linked_list.length)
 
+my_linked_list.prepend(8)
 
-print()
-print("\nprint list:")
+print("\nprepend:")
 my_linked_list.print_list()
-
-print("\nlength:", my_linked_list.length)
-
-
                                                                          
