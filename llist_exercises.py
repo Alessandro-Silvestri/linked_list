@@ -109,8 +109,6 @@ class LinkedList:
             temp = self.get(index)
             temp.value = value
             return True
-    
-
 
     def insert(self, index, value):
         self.new_node = Node(value)
@@ -132,24 +130,49 @@ class LinkedList:
             self.length += 1
             return True
 
+################### UNTIL HERE: the method should return the removed node ######
+    def remove(self, index):
+        # edge cases: out of range
+        if index < 0 or index > self.length - 1:
+            return None
+        # the list contains only 1 node
+        elif self.length == 1 and index == 0:
+            self.pop()
+        # removing the first node
+        elif index == 0:
+            self.pop_first()
+        else:
+            # normal case
+            pre = self.get(index - 1)
+            temp = pre.next
+            after = temp.next
+            temp.next = None
+            pre.next = after
+            self.length -= 1
+##################################################################################
 
 
-            
-
-          
 
 my_linked_list = LinkedList(1)
+
+
+my_linked_list.print_list()
+
+print("\npop remove:")
 my_linked_list.pop()
 
-print("list:")
-my_linked_list.print_list()
-
-print("insert in 0 position")
-my_linked_list.insert(0, 5)
-
-print("new list:")
+print("\nnew list")
 my_linked_list.print_list()
 
 
-print("length:")
-print(my_linked_list.length)
+print("\nremove:")
+my_linked_list.remove(-1)
+
+print("\nnew list")
+my_linked_list.print_list()
+
+
+
+print(f"\nlength: {my_linked_list.length}")
+
+print(f"head: {my_linked_list.head}, tail: {my_linked_list.tail}")
