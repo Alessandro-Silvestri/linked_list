@@ -108,39 +108,38 @@ class LinkedList:
         else:
             temp = self.get(index)
             temp.value = value
+    
+
+    ######## until here: no works, didn't pass the test #############################
+    def insert(self, index, value):
+        self.new_node = Node(value)
+        # edge cases: out of range, insert in first or last position
+        if index < 0 or index >= self.length + 1:
+            return None
+        elif index == 0:
+            self.prepend(value)
+        elif index == self.length:
+            self.append(value)
+        # normal cases
+        else:
+            pre = self.get(index - 1)
+            temp = pre.next
+            pre.next = self.new_node
+            self.new_node.next = temp
+            self.length += 1
+    ##############################################
 
 
             
 
           
 
-my_linked_list = LinkedList(11)
-my_linked_list.append(3)
-my_linked_list.append(23)
-my_linked_list.append(7)
+my_linked_list = LinkedList(1)
+my_linked_list.print_list
 
-print('LL before set_value():')
-my_linked_list.print_list()
-
-my_linked_list.set_value(1,4)
-
-print('\nLL after set_value():')
-my_linked_list.print_list()
+print("pop")
+my_linked_list.pop()
 
 
-
-"""
-    EXPECTED OUTPUT:
-    ----------------
-    LL before set_value():
-    11
-    3
-    23
-    7
-
-    LL after set_value():
-    11
-    4
-    23
-    7
-"""
+print("\nlist")
+my_linked_list.pop()
