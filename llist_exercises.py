@@ -102,15 +102,16 @@ class LinkedList:
     
     def set_value(self, index, value):
         if index < 0:
-            return None
+            return False
         elif index > self.length - 1:
-            return None
+            return False
         else:
             temp = self.get(index)
             temp.value = value
+            return True
     
 
-    ######## until here: no works, didn't pass the test #############################
+
     def insert(self, index, value):
         self.new_node = Node(value)
         # edge cases: out of range, insert in first or last position
@@ -118,8 +119,10 @@ class LinkedList:
             return None
         elif index == 0:
             self.prepend(value)
+            return True
         elif index == self.length:
             self.append(value)
+            return True
         # normal cases
         else:
             pre = self.get(index - 1)
@@ -127,7 +130,8 @@ class LinkedList:
             pre.next = self.new_node
             self.new_node.next = temp
             self.length += 1
-    ##############################################
+            return True
+
 
 
             
@@ -135,11 +139,17 @@ class LinkedList:
           
 
 my_linked_list = LinkedList(1)
-my_linked_list.print_list
-
-print("pop")
 my_linked_list.pop()
 
+print("list:")
+my_linked_list.print_list()
 
-print("\nlist")
-my_linked_list.pop()
+print("insert in 0 position")
+my_linked_list.insert(0, 5)
+
+print("new list:")
+my_linked_list.print_list()
+
+
+print("length:")
+print(my_linked_list.length)
