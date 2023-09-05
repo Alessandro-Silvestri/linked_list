@@ -86,23 +86,36 @@ class LinkedList:
         pre.next = None
         self.length -= 1
         return pre
+    
+    def get(self, index):
+        # edge cases: out of range
+        if self.length == 1:
+            return self.head
+        elif index < 0 or index > self.length - 1:
+            return None
+        else:
+            # normale case
+            temp = self.head
+            for i in range(index):
+                temp = temp.next
+            return temp
+
 
             
 
           
 
-my_linked_list = LinkedList(1)
+my_linked_list = LinkedList(5)
+my_linked_list.append(3)
+my_linked_list.append(15)
+my_linked_list.append(8)
+my_linked_list.append(2)
+my_linked_list.append(22)
+my_linked_list.append(16)
+
 my_linked_list.print_list()
 
 
-print("\npop first:")
-print(my_linked_list.pop_first().value)
-print(my_linked_list.pop_first())
-print(my_linked_list.pop_first())
-print(my_linked_list.pop_first())
-
-print("\nprint list:")
-my_linked_list.print_list()                                                                  
-
-print("\nlength:")
-print(my_linked_list.length)
+print()
+print(my_linked_list.get(0).value)
+print(f"length: {my_linked_list.length}")
