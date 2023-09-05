@@ -99,23 +99,48 @@ class LinkedList:
             for i in range(index):
                 temp = temp.next
             return temp
+    
+    def set_value(self, index, value):
+        if index < 0:
+            return None
+        elif index > self.length - 1:
+            return None
+        else:
+            temp = self.get(index)
+            temp.value = value
 
 
             
 
           
 
-my_linked_list = LinkedList(5)
+my_linked_list = LinkedList(11)
 my_linked_list.append(3)
-my_linked_list.append(15)
-my_linked_list.append(8)
-my_linked_list.append(2)
-my_linked_list.append(22)
-my_linked_list.append(16)
+my_linked_list.append(23)
+my_linked_list.append(7)
 
+print('LL before set_value():')
+my_linked_list.print_list()
+
+my_linked_list.set_value(1,4)
+
+print('\nLL after set_value():')
 my_linked_list.print_list()
 
 
-print()
-print(my_linked_list.get(0).value)
-print(f"length: {my_linked_list.length}")
+
+"""
+    EXPECTED OUTPUT:
+    ----------------
+    LL before set_value():
+    11
+    3
+    23
+    7
+
+    LL after set_value():
+    11
+    4
+    23
+    7
+"""
