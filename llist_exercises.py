@@ -160,10 +160,7 @@ class LinkedList:
             temp = after
             after = temp.next
         self.head.next = pre
-        
-
-
-
+    
 
 my_linked_list = LinkedList(1)
 my_linked_list.append(2)
