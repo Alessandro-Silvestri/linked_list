@@ -68,7 +68,6 @@ class LinkedList:
             self.head = self.new_node
             self.length += 1
     
-
     def pop_first(self):
         #edge cases: empty list or with 1 node
         if self.length == 0:
@@ -129,18 +128,17 @@ class LinkedList:
             self.new_node.next = temp
             self.length += 1
             return True
-
-################### UNTIL HERE: the method should return the removed node ######
+        
     def remove(self, index):
         # edge cases: out of range
         if index < 0 or index > self.length - 1:
             return None
         # the list contains only 1 node
         elif self.length == 1 and index == 0:
-            self.pop()
+            return self.pop()
         # removing the first node
         elif index == 0:
-            self.pop_first()
+            return self.pop_first()
         else:
             # normal case
             pre = self.get(index - 1)
@@ -149,30 +147,22 @@ class LinkedList:
             temp.next = None
             pre.next = after
             self.length -= 1
-##################################################################################
-
+            return temp
 
 
 my_linked_list = LinkedList(1)
-
+my_linked_list.append(5)
+my_linked_list.append(10)
+my_linked_list.append(8)
+my_linked_list.append(2)
+my_linked_list.append(30)
 
 my_linked_list.print_list()
+print(f"length: {my_linked_list.length}")
+print()
+print(my_linked_list.remove(6))
 
-print("\npop remove:")
-my_linked_list.pop()
-
-print("\nnew list")
+print()
 my_linked_list.print_list()
-
-
-print("\nremove:")
-my_linked_list.remove(-1)
-
-print("\nnew list")
-my_linked_list.print_list()
-
-
 
 print(f"\nlength: {my_linked_list.length}")
-
-print(f"head: {my_linked_list.head}, tail: {my_linked_list.tail}")
