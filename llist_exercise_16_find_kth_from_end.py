@@ -21,35 +21,23 @@ class LinkedList:
             self.tail = new_node
         return True
 
-    def find_kth_from_end(self, value):
-        slow = self.head
-        fast = self.head
-
-        for i in range(value):
-            if fast is None:
-                return None
-            fast = fast.next
-            # print(f"fast: {fast}")
-        
-        while fast is not None:
-            slow = slow.next
-            fast = fast.next
-        
-        return slow
-
-
-# the exercise requires to write a function
+# this time the exercise require a function and not a method
 def find_kth_from_end(llist, value):
+    ''' It uses 2 pointers (slow/fast)
+    The fast pointer moves value nodes ahead in the list
+    then they move together one step at the time, when fast achievese the end
+    (becoming None), return slow
+    '''
     slow = llist.head
     fast = llist.head
-    return slow.value, fast.value
-
+    # just moving fast pointer ahead (value times)
     for i in range(value):
+        '''if fast become None the value is out of range'''
         if fast is None:
             return None
         fast = fast.next
-        # print(f"fast: {fast}")
     
+    # the 2 pointers move together until fast is None
     while fast is not None:
         slow = slow.next
         fast = fast.next
@@ -57,16 +45,13 @@ def find_kth_from_end(llist, value):
     return slow
 
 
+
+
 my_linked_list = LinkedList(1)
 my_linked_list.append(2)
 my_linked_list.append(3)
 my_linked_list.append(4)
 my_linked_list.append(5)
-
-
-print(find_kth_from_end(my_linked_list, 2))
-
-
 
 
 k = 2
