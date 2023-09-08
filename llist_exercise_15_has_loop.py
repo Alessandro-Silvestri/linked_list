@@ -43,12 +43,7 @@ class LinkedList:
 
 
 
-def check(a, b):
-    return a > b
 
-print(check(4, 7))
-
-quit()
 my_linked_list_1 = LinkedList(1)
 my_linked_list_1.append(2)
 my_linked_list_1.append(3)

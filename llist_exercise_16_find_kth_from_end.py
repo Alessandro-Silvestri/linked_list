@@ -36,7 +36,6 @@ def find_kth_from_end(llist, value):
         if fast is None:
             return None
         fast = fast.next
-    
     # the 2 pointers move together until fast is None
     while fast is not None:
         slow = slow.next
