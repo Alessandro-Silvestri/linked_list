@@ -50,17 +50,23 @@ class LinkedList:
                 ll_list2.append(temp.value)
                 temp = temp.next
 
+
         temp = ll_list1.head
+        ll_temp = self.head
         while temp is not None:
-            self.ll_result.append(temp.value)
+            ll_temp.value = temp.value
             temp = temp.next
-
+            ll_temp = ll_temp.next
+            
         temp = ll_list2.head
+        ll_temp = ll_temp
         while temp is not None:
-            self.ll_result.append(temp.value)
+            ll_temp.value = temp.value
             temp = temp.next
+            ll_temp = ll_temp.next
 
-
+        # if self.ll_result is not None:
+        #     self.ll_result.print_list()
 
 
 ll = LinkedList(3)
@@ -73,8 +79,19 @@ ll.append(1)
 print("LL before partition_list:")
 ll.print_list() # Output: 3 5 8 10 2 1
 
+print()
 ll.partition_list(5)
+
+print()
+ll.print_list()
 quit()
+
+
+
+
+
+
+
 print("LL after partition_list:")
 ll.print_list() # Output: 3 2 1 5 8 10
 
