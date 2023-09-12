@@ -42,42 +42,56 @@ class LinkedList:
         temp = self.head
         slow = self.head
         fast = self.head
-
-
-
         fast = fast.next
-#########################################################
+        
         while fast is not None:  
             if fast.value != temp.value:
                 slow = fast
                 fast = fast.next
+                # print(f"temp.value: {temp.value}, slow.value: {slow.value}, fast.value: {fast.value}")
             else:
-                print(f"fast value: {fast.value}")
-                # while fast.next == 1:
-                #     print(f"repetitive number: {fast.value}")
-                #     fast = fast.next
+                # check if 1 repeated number is at the end
+                if fast.next is None:
+                    slow.next = None
+                    break
+                # check if there are duplicates in raw
+                if fast.next.value == temp.value:
+                    while fast.value == temp.value and fast.next.value == temp.value:
+                        fast = fast.next
+                        if fast.next is None:
+                            slow.next = None
+                            break
+                
+                # pointers moove
                 fast = fast.next
                 slow.next = fast
                 slow = fast
-            
+                
+                # when the iteration achieves the end of the list
+                if not fast:
+                    break
+                fast = fast.next
 
         
 
-
-
-
-
-my_linked_list = LinkedList(1)
-my_linked_list.append(2)
-my_linked_list.append(1)
-my_linked_list.append(1)
-my_linked_list.append(1)
+my_linked_list = LinkedList(2)
 my_linked_list.append(3)
+my_linked_list.append(2)
+my_linked_list.append(2)
+my_linked_list.append(2)
+
+
+
+print("list: before removing the duplicates")
 my_linked_list.print_all()
+
 
 print()
 my_linked_list.remove_duplicates()
 
+
+
+print("\n\nremoved duplicates")
 my_linked_list.print_all()
 quit()
 
