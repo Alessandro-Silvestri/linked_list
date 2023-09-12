@@ -35,10 +35,8 @@ class LinkedList:
         # creating 2 empty lists 
         ll_list1 = LinkedList(1)
         ll_list2 = LinkedList(1)
-        self.ll_result = LinkedList(1)
         ll_list1.make_empty()
         ll_list2.make_empty()
-        self.ll_result.make_empty()
 
         temp = self.head
 
@@ -80,7 +78,7 @@ print("LL before partition_list:")
 ll.print_list() # Output: 3 5 8 10 2 1
 
 print()
-ll.partition_list(5)
+ll.partition_list(10)
 
 print()
 ll.print_list()
