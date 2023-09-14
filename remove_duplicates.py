@@ -74,46 +74,46 @@ class LinkedList:
                     fast = fast.next
             head_temp = head_temp.next
 
+    def remove_duplicates_set(self):
+        '''using set{} and 2 pointers that become 3 when the iteration meets a duplicate value'''
+        #setting the 2 pointers and the set
+        slow = self.head
+        fast = slow.next
+        set_values = {slow.value}
+        # iteration
+        while fast is not None:
+            # if the node is not a duplicate
+            if fast.value not in set_values:
+                set_values.add(fast.value)
+                slow = fast
+                fast = fast.next
+            else:
+            # if the node is a duplicate
+                self.length -= 1
+                fast_fast = fast.next
+                fast.next = None
+                slow.next = fast_fast
+                fast = fast_fast
+        
+
+                
 
 
- 
 
 
         
 
 my_linked_list = LinkedList(1)
-my_linked_list.append(2)
-my_linked_list.append(4)
-my_linked_list.append(4)
-my_linked_list.append(8)
-my_linked_list.append(8)
-my_linked_list.append(5)
-my_linked_list.append(5)
-my_linked_list.append(3)
+my_linked_list.append(1)
 
 
 
 my_linked_list.print_all()
 
 print()
-my_linked_list.remove_duplicates()
-print("duplicate 1st value removed")
+my_linked_list.remove_duplicates_set()
 
-
+print("removed")
 my_linked_list.print_all()
 
-
-
-
-"""
-    EXPECTED OUTPUT:
-    ----------------
-    Head:  1
-    Length:  4
-    Linked List:
-    1
-    2
-    3
-    4
-    
-"""
+print(f"length: {my_linked_list.length}")
