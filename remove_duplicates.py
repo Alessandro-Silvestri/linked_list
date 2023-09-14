@@ -39,13 +39,13 @@ class LinkedList:
         self.length += 1
 
     def remove_duplicates(self):
+        '''using 3 pointers'''
         head_temp = self.head
-
-        for i in range(2):
+        while head_temp:
             slow = head_temp
             fast = slow.next
 
-            while fast is not None: 
+            while fast: 
                 if fast.value != head_temp.value:
                     slow = fast
                     fast = fast.next
@@ -82,13 +82,13 @@ class LinkedList:
         
 
 my_linked_list = LinkedList(1)
-my_linked_list.append(3)
-my_linked_list.append(1)
 my_linked_list.append(2)
-my_linked_list.append(1)
-my_linked_list.append(2)
-my_linked_list.append(1)
-my_linked_list.append(1)
+my_linked_list.append(4)
+my_linked_list.append(4)
+my_linked_list.append(8)
+my_linked_list.append(8)
+my_linked_list.append(5)
+my_linked_list.append(5)
 my_linked_list.append(3)
 
 
