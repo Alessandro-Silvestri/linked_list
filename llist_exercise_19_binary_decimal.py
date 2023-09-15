@@ -38,11 +38,8 @@ class LinkedList:
         else:
             self.print_list()   
 
-
-
-
-
     def binary_to_decimal(self):
+        '''my version '''
         temp = self.head
         n = 1
         decimal = 0
@@ -55,11 +52,19 @@ class LinkedList:
             temp = temp.next       
         return int(decimal)
 
+    def binary_to_decimal2(self):
+        '''course version: no lenght needed'''
+        num = 0
+        current = self.head
+        while current:
+            num = num * 2 + current.value
+            current = current.next
+        return num
+
 
 
 
 linked_list = LinkedList(1)
+linked_list.append(0)
 linked_list.append(1)
-linked_list.append(1)
-
-print(linked_list.binary_to_decimal())
+print(linked_list.binary_to_decimal2())
