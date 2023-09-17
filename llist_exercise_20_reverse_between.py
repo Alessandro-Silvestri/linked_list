@@ -48,22 +48,24 @@ class LinkedList:
             slow = fast
             fast = fast.next
 
+        ############## loop ########################################
+
         # create the runner pointer and it goes at the end of the group to reverse
         runner = fast
         for i in range(runner_steps):
             runner = runner.next
-
         
-        # return f"slow: {slow.value} fast: {fast.value} runner: {runner.value} runner_steps: {runner_steps}"
-    
+
+        # connecting the 2 sides of the normal llist
+        fast.next = runner.next
 
 
-        # loop
+
         # last node of reverse group at the beginning
 
         slow.next = runner
         runner.next = fast
-
+        return self.head.next.next.next.next.value
         # moving the pointers (fast remains still)
         slow = slow.next
         runner = fast
