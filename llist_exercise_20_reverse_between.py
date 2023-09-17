@@ -34,46 +34,35 @@ class LinkedList:
 
 
     def reverse_between(self, start_index, end_index):
+        '''changed the set up: check the note'''
         # creating pointers
         slow = None
-        fast = self.head
-        
-    
+        fast = self.head         
          # create var cointaining how many steps runner will do
         runner_steps = end_index - start_index
-       
         # the pointer fast achieves the first Node of the group to reverse
         # and slow a step back
         for i in range(start_index):
             slow = fast
             fast = fast.next
-
-        ############## loop ########################################
-
         # create the runner pointer and it goes at the end of the group to reverse
         runner = fast
         for i in range(runner_steps):
             runner = runner.next
-        
-
-        # connecting the 2 sides of the normal llist
-        fast.next = runner.next
-
-
-
-        # last node of reverse group at the beginning
-
-        slow.next = runner
-        runner.next = fast
-        return self.head.next.next.next.next.value
-        # moving the pointers (fast remains still)
-        slow = slow.next
-        runner = fast
-        runner_steps -= 1
-        
-
-
-
+        # create pointer (first value of the llist after the reverse group)
+        cont = runner.next
+        ############### LOOP ########################################################
+        for i in range(end_index - start_index):
+            # moving the last node of the reverse group at the beginning of the same group
+            slow.next = runner
+            runner.next = fast
+            runner = fast
+            runner_steps -= 1
+            # moving runner at the end of the node of the revers group
+            for i in range(runner_steps):
+                runner = runner.next
+            slow = slow.next
+        fast.next = cont
 
 
 linked_list = LinkedList(1)
@@ -82,6 +71,13 @@ linked_list.append(3)
 linked_list.append(4)
 linked_list.append(5)
 linked_list.append(6)
+linked_list.append(7)
+linked_list.append(8)
+linked_list.append(9)
+linked_list.append(10)
 
-print(linked_list.reverse_between(2, 4))
+
+linked_list.reverse_between(4, 7)
+linked_list.print_list()
+
 
