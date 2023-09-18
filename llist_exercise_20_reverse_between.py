@@ -31,9 +31,29 @@ class LinkedList:
         self.head = None
         self.length = 0
 
-
-
     def reverse_between(self, start_index, end_index):
+        '''solved by the course'''
+        if self.length <= 1:
+            return
+    
+        dummy_node = Node(0) # creating a new node
+        dummy_node.next = self.head
+        previous_node = dummy_node
+    
+        for i in range(start_index):
+            previous_node = previous_node.next
+    
+        current_node = previous_node.next
+    
+        for i in range(end_index - start_index):
+            node_to_move = current_node.next
+            current_node.next = node_to_move.next
+            node_to_move.next = previous_node.next
+            previous_node.next = node_to_move
+    
+        self.head = dummy_node.next
+
+    def reverse_between_my_solution(self, start_index, end_index):
         '''changed the set up: check the note'''
         # creating pointers
         slow = None
@@ -69,15 +89,6 @@ linked_list = LinkedList(1)
 linked_list.append(2)
 linked_list.append(3)
 linked_list.append(4)
-linked_list.append(5)
-linked_list.append(6)
-linked_list.append(7)
-linked_list.append(8)
-linked_list.append(9)
-linked_list.append(10)
 
-
-linked_list.reverse_between(4, 7)
+linked_list.reverse_between(1, 2)
 linked_list.print_list()
-
-
