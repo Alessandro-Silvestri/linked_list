@@ -104,16 +104,21 @@ class DoublyLinkedList:
             temp = self.head
             # starting from head
             for i in range(index):
-                print(f"temp.value {temp}")
                 temp = temp.next
             # starting from tail
         else:
             temp = self.tail
             for i in range(self.length - 1 - index):
-                print(f"temp.value {temp}")
                 temp = temp.prev
         return temp
-            
+    
+    def set_value(self, index, value):
+        temp = self.get(index)
+        if temp:
+            temp.value = value
+            return True
+        return False
+
         
 
 
@@ -121,11 +126,11 @@ class DoublyLinkedList:
 
 my_doubly_linked_list = DoublyLinkedList(1)
 my_doubly_linked_list.append(2)
+my_doubly_linked_list.append(3)
+my_doubly_linked_list.append(4)
 my_doubly_linked_list.print_list()
 
-print()
-print(my_doubly_linked_list.pop().value)
-print(my_doubly_linked_list.pop().value)
 
-print(my_doubly_linked_list.get(6))
-# print("\nnode: ", my_doubly_linked_list.get(8))
+my_doubly_linked_list.set_value(0, 10)
+print()
+my_doubly_linked_list.print_list()
