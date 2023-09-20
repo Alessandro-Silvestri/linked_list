@@ -13,6 +13,7 @@ I built a nodes linked list class and it is possible to execute operations like:
 All the methods handel edge cases
 
 Solved by Alessandro Silvestri - 2023 <alessandro.silvestri.work@gmail.com>
+GitHub: https://github.com/Alessandro-Silvestri
 '''
 
 class Node:
@@ -92,17 +93,39 @@ class DoublyLinkedList:
         self.head = temp
         self.length -= 1
         return before
+    
+    def get(self, index):
+        # edge case: index out of range and empty list
+        if index < 0 or index > self.length - 1 or self.head is None:
+            return None
+        # creting mid point var        
+        mid_point = self.length / 2
+        if index < mid_point:
+            temp = self.head
+            # starting from head
+            for i in range(index):
+                print(f"temp.value {temp}")
+                temp = temp.next
+            # starting from tail
+        else:
+            temp = self.tail
+            for i in range(self.length - 1 - index):
+                print(f"temp.value {temp}")
+                temp = temp.prev
+        return temp
+            
+        
 
 
 
 
 my_doubly_linked_list = DoublyLinkedList(1)
-# my_doubly_linked_list.append(2)
-# my_doubly_linked_list.append(3)
-# my_doubly_linked_list.append(4)
-# my_doubly_linked_list.append(5)
+my_doubly_linked_list.append(2)
+my_doubly_linked_list.print_list()
 
-print(my_doubly_linked_list.pop_first().value)
-print(my_doubly_linked_list.pop_first())
+print()
+print(my_doubly_linked_list.pop().value)
+print(my_doubly_linked_list.pop().value)
 
-print(my_doubly_linked_list.length)
+print(my_doubly_linked_list.get(6))
+# print("\nnode: ", my_doubly_linked_list.get(8))
