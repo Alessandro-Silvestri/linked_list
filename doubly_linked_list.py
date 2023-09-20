@@ -46,6 +46,7 @@ class DoublyLinkedList:
             new_node.prev = temp
             self.tail = self.tail.next
         self.length += 1
+        return True
 
     def prepend(self, value):
         new_node = Node(value)
@@ -58,6 +59,7 @@ class DoublyLinkedList:
             self.head.prev = new_node
             self.head = new_node
         self.length += 1
+        return True
 
     def pop(self):
         # edge case: empty list
@@ -119,6 +121,30 @@ class DoublyLinkedList:
             return True
         return False
 
+    def insert(self, index, value):
+        new_node = Node(value)
+        # edge case: index out of range
+        if index < 0 or index > self.length:
+            return None
+        # edge case: node at the beginning
+        elif index == 0:
+            return self.prepend(value)
+        # edge case: node at the end
+        elif index == self.length:
+            return self.append(value)
+        # normal case
+        else:
+            # normal case
+            after = self.get(index)
+            before = after.prev
+            before.next = new_node
+            new_node.prev = before
+            new_node.next = after
+            after.prev = new_node
+            self.length += 1
+            return True
+
+
         
 
 
@@ -128,9 +154,12 @@ my_doubly_linked_list = DoublyLinkedList(1)
 my_doubly_linked_list.append(2)
 my_doubly_linked_list.append(3)
 my_doubly_linked_list.append(4)
+my_doubly_linked_list.append(5)
+my_doubly_linked_list.append(6)
 my_doubly_linked_list.print_list()
 
-
-my_doubly_linked_list.set_value(0, 10)
 print()
+print(my_doubly_linked_list.insert(6, 10))
+
 my_doubly_linked_list.print_list()
+print(f"lenth: {my_doubly_linked_list.length}")
