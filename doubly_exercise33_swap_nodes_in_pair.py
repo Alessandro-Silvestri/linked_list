@@ -33,21 +33,44 @@ class DoublyLinkedList:
         return True
 
     def swap_pairs(self):
-        before = self.head
-        after = before.next
+        self.before = self.head
+        self.after = self.before.next
 
-        # iteration
-        # create additional pointers
-        before1 = before.prev
-        after2 = after.next
 
-        after.next = before
-        before.prev = after
-        after.prev = before1
-        before.next = after2
+        ########## UNTIL HERE: Try with the for loop#################
+        while True:
+            # iteration
+            # create additional pointers
+            self.before1 = self.before.prev 
+            self.after1 = self.after.next
 
-        # swappare before e next ma prima controlla che tutto funzioni
-
+            # swap pair
+            self.after.next = self.before
+            self.before.prev = self.after
+            self.after.prev = self.before1
+            self.before.next = self.after1
+            
+            if self.after1 is not None:
+                self.after1.prev = self.before
+            
+            # swap self.before and after
+            self.before, self.after = self.after, self.before
+            
+            # put head at the beginning only the first iteration 
+            if self.before1 is None:
+                self.head = self.before
+            
+            
+            # # break the connection of before1 and after1 pointers (maybe doesn't need)
+            # self.before1 = self.after1 = None
+            
+            # moving forward all the pointers
+            if self.after.next is None or self.after.next.next is None:
+                break
+            else:
+                self.before = self.before.next.next
+                self.after = self.after.next.next
+            
 
 
 
@@ -57,7 +80,13 @@ my_dll = DoublyLinkedList(1)
 my_dll.append(2)
 my_dll.append(3)
 my_dll.append(4)
-my_dll.append(5)
+my_dll.print_list()
+print()
 
-print(my_dll.swap_pairs())
+my_dll.swap_pairs()
+my_dll.print_list()
+
+print(my_dll.after.value)
+
+
 
