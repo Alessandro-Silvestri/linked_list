@@ -42,7 +42,6 @@ class DoublyLinkedList:
             after2 = after.next
             before.prev = after
             after.next = before
-
             # moving forward the pointers
             before = after
             after = after2
