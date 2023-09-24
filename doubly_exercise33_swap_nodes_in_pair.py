@@ -32,17 +32,17 @@ class DoublyLinkedList:
         self.length += 1
         return True
 
-
-
-######## BUG: consider empty list, 1 node, end check odd num nodes######
     def swap_pairs(self):
+        # edge case: empty list
+        if self.length == 0 or self.length == 1:
+            return
         before = self.head
         after = before.next
         # calculate the number of iterations
         iter_n = self.length
         if iter_n % 2 != 0:
             iter_n -= 1
-        iter_n = int((iter_n / 2) - 1)
+        iter_n = int((iter_n / 2))
         #iteration
         for i in range(iter_n):
             # create additional pointers
@@ -54,24 +54,23 @@ class DoublyLinkedList:
             before.next = after1
             after.prev = before1
             # considering before1 and after1
-            if before1 is not None:
+            if before1:
                 before1.next = after
-            if after1 is not None:
-                after1.prev = before
+            if after1:
+                after1.prev =before
             # swap before and after
             before, after = after, before
             # put head at the beginning only the first iteration 
-            if before1 is None:
-                self.head = before
+            if not before1:
+                self.head = before         
             # moving forward all the pointers
+            if not after1:
+                break
             before = before.next.next
             after = after.next.next
 
+
             
-
-
-
-
 
 my_dll = DoublyLinkedList(1)
 my_dll.append(2)
@@ -81,12 +80,9 @@ my_dll.append(5)
 my_dll.append(6)
 my_dll.append(7)
 my_dll.append(8)
-my_dll.append(9)
-my_dll.append(10)
 my_dll.print_list()
-print()
-
 
 my_dll.swap_pairs()
 
+print()
 my_dll.print_list()
