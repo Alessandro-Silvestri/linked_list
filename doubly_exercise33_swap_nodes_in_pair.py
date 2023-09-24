@@ -33,6 +33,7 @@ class DoublyLinkedList:
         return True
 
     def swap_pairs(self):
+        '''using 4 pointers'''
         # edge case: empty list
         if self.length == 0 or self.length == 1:
             return
