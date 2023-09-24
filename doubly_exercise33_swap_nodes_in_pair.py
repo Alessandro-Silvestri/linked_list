@@ -32,44 +32,41 @@ class DoublyLinkedList:
         self.length += 1
         return True
 
+
+
+######## BUG: consider empty list, 1 node, end check odd num nodes######
     def swap_pairs(self):
-        self.before = self.head
-        self.after = self.before.next
-
-
-        ########## UNTIL HERE: Try with the for loop#################
-        while True:
-            # iteration
+        before = self.head
+        after = before.next
+        # calculate the number of iterations
+        iter_n = self.length
+        if iter_n % 2 != 0:
+            iter_n -= 1
+        iter_n = int((iter_n / 2) - 1)
+        #iteration
+        for i in range(iter_n):
             # create additional pointers
-            self.before1 = self.before.prev 
-            self.after1 = self.after.next
-
-            # swap pair
-            self.after.next = self.before
-            self.before.prev = self.after
-            self.after.prev = self.before1
-            self.before.next = self.after1
-            
-            if self.after1 is not None:
-                self.after1.prev = self.before
-            
-            # swap self.before and after
-            self.before, self.after = self.after, self.before
-            
+            before1 = before.prev 
+            after1 = after.next
+            # swap after/before connections (internal/external)
+            after.next = before
+            before.prev = after
+            before.next = after1
+            after.prev = before1
+            # considering before1 and after1
+            if before1 is not None:
+                before1.next = after
+            if after1 is not None:
+                after1.prev = before
+            # swap before and after
+            before, after = after, before
             # put head at the beginning only the first iteration 
-            if self.before1 is None:
-                self.head = self.before
-            
-            
-            # # break the connection of before1 and after1 pointers (maybe doesn't need)
-            # self.before1 = self.after1 = None
-            
+            if before1 is None:
+                self.head = before
             # moving forward all the pointers
-            if self.after.next is None or self.after.next.next is None:
-                break
-            else:
-                self.before = self.before.next.next
-                self.after = self.after.next.next
+            before = before.next.next
+            after = after.next.next
+
             
 
 
@@ -80,13 +77,16 @@ my_dll = DoublyLinkedList(1)
 my_dll.append(2)
 my_dll.append(3)
 my_dll.append(4)
+my_dll.append(5)
+my_dll.append(6)
+my_dll.append(7)
+my_dll.append(8)
+my_dll.append(9)
+my_dll.append(10)
 my_dll.print_list()
 print()
 
+
 my_dll.swap_pairs()
+
 my_dll.print_list()
-
-print(my_dll.after.value)
-
-
-
