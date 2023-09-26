@@ -1,3 +1,12 @@
+'''
+Python: data structures and algorithms - course
+Stack representation with methods: push, pop and print stack,
+all the methods handle edge cases.
+
+Solved by Alessandro Silvestri - 2023 <alessandro.silvestri.work@gmail.com>
+GitHub: https://github.com/Alessandro-Silvestri
+'''
+
 class Node:
     def __init__(self, value):
         self.value = value
