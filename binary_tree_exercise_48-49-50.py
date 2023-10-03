@@ -1,3 +1,14 @@
+'''
+Python:
+Data Structures and Algorithms - Udemy course
+
+I built a nodes binary tree class and it's possible
+to insert and to get nodes.
+All the methods handel edge cases
+
+Solved by Alessandro Silvestri - 2023 <alessandro.silvestri.work@gmail.com>
+'''
+
 class Node:
     def __init__(self, value):
         self.value = value
@@ -44,13 +55,11 @@ class BinarySearchTree:
         return False
 
 
-
-
 my_b_tree = BinarySearchTree()
-print(my_b_tree.insert(2))
-print(my_b_tree.insert(1))
-print(my_b_tree.insert(3))
-print(my_b_tree.insert(2))
+# print(my_b_tree.insert(2))
+# print(my_b_tree.insert(1))
+# print(my_b_tree.insert(3))
+# print(my_b_tree.insert(2))
 
 print()
 print(my_b_tree.contains(4))
