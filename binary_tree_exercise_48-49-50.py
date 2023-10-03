@@ -31,10 +31,26 @@ class BinarySearchTree:
                     temp.left = new_node
                     return True
                 temp = temp.left
+    
+    def contains(self, value):
+        temp = self.root
+        while temp:
+            if value == temp.value:
+                return True
+            elif value > temp.value:
+                temp = temp.right
+            elif value < temp.value:
+                temp = temp.left
+        return False
+
+
 
 
 my_b_tree = BinarySearchTree()
 print(my_b_tree.insert(2))
 print(my_b_tree.insert(1))
 print(my_b_tree.insert(3))
-print(my_b_tree.insert(3))
+print(my_b_tree.insert(2))
+
+print()
+print(my_b_tree.contains(4))
